@@ -1,3 +1,6 @@
+Mundo dos brindes · HTML
+Copiar
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -25,18 +28,18 @@
     --radius: 20px;
     --radius-sm: 12px;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     font-family: 'DM Sans', sans-serif;
     background-color: var(--cream);
     color: var(--text-main);
     overflow-x: hidden;
   }
-
+ 
   /* ─── CURSOR PERSONALIZADO ─── */
   .cursor-dot {
     width: 10px; height: 10px;
@@ -55,7 +58,7 @@
     transition: transform 0.4s ease, opacity 0.3s ease;
     opacity: 0.5;
   }
-
+ 
   /* ─── NAVBAR ─── */
   .navbar-brand-logo {
     font-family: 'Playfair Display', serif;
@@ -88,7 +91,7 @@
     transition: background 0.2s, transform 0.15s;
   }
   .nav-cta:hover { background: var(--coral-dark) !important; transform: scale(1.04); }
-
+ 
   /* ─── HERO ─── */
   .hero {
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #2d1a3e 100%);
@@ -217,7 +220,7 @@
   .emoji-card-hero p { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin: 8px 0 0; font-weight: 500; }
   .emoji-card-hero:hover { transform: translateY(-6px) scale(1.06); background: rgba(255,90,74,0.18); }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
+ 
   /* ─── SECTION GLOBAL ─── */
   section { padding: 90px 0; }
   .section-label {
@@ -234,7 +237,7 @@
     line-height: 1.2; margin-bottom: 16px;
   }
   .section-subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; }
-
+ 
   /* ─── PROBLEMA / SOLUÇÃO ─── */
   #problema-solucao { background: var(--white); }
   .problema-box {
@@ -262,7 +265,7 @@
     font-size: 4rem; opacity: 0.12;
   }
   .solucao-box h4 { color: var(--gold); }
-
+ 
   /* ─── PRODUTOS ─── */
   #produtos { background: var(--gray-soft); }
   .product-card {
@@ -301,7 +304,7 @@
     letter-spacing: 0.06em; text-transform: uppercase;
   }
   .product-card.featured { background: linear-gradient(135deg, #fff8f4 0%, #fff0eb 100%); }
-
+ 
   /* ─── DETALHES ─── */
   #detalhes { background: var(--white); }
   .detail-item {
@@ -323,7 +326,7 @@
   }
   .detail-item h6 { font-weight: 700; color: var(--text-main); margin-bottom: 2px; font-size: 1rem; }
   .detail-item span { color: var(--text-muted); font-size: 0.88rem; }
-
+ 
   /* ─── CANAIS ─── */
   #canais { background: var(--navy); }
   #canais .section-title { color: var(--white); }
@@ -344,7 +347,7 @@
   .canal-card .canal-icon { font-size: 2.6rem; display: block; margin-bottom: 12px; }
   .canal-card h6 { color: white; font-weight: 700; font-size: 0.95rem; }
   .canal-card span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
-
+ 
   /* ─── BOTÕES DE CONTATO FLUTUANTES ─── */
   .contact-bar {
     position: fixed; bottom: 28px; right: 28px;
@@ -371,7 +374,7 @@
     transition: opacity 0.2s;
   }
   .float-btn:hover .float-btn-label { opacity: 1; }
-
+ 
   /* ─── DIFERENCIAIS ─── */
   #diferenciais { background: var(--cream); }
   .diff-card {
@@ -392,7 +395,7 @@
   }
   .diff-card h5 { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
   .diff-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
-
+ 
   /* ─── EQUIPE ─── */
   #equipe { background: var(--white); }
   .team-visual {
@@ -432,7 +435,7 @@
   .team-detail .big { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--coral); }
   .team-detail h6 { font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
   .team-detail p { color: var(--text-muted); font-size: 0.88rem; }
-
+ 
   /* ─── CTA FINAL ─── */
   #cta {
     background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 50%, #c02b1b 100%);
@@ -466,7 +469,7 @@
     margin: 8px;
   }
   .btn-cta-outline:hover { background: rgba(255,255,255,0.12); color: white; transform: translateY(-4px); }
-
+ 
   /* ─── FOOTER ─── */
   footer {
     background: var(--navy);
@@ -482,7 +485,7 @@
   footer a { color: var(--coral-light); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--gold); }
   .footer-divider { border-color: rgba(255,255,255,0.1); margin: 32px 0 24px; }
-
+ 
   /* ─── ANIMAÇÕES DE ENTRADA ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(32px); }
@@ -495,13 +498,13 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
   .reveal-delay-5 { transition-delay: 0.5s; }
-
+ 
   /* ─── MODAL PRODUTO ─── */
   .product-modal-emoji { font-size: 4rem; display: block; margin-bottom: 16px; }
   .modal-content { border-radius: var(--radius) !important; border: none; }
   .modal-header { border-bottom: none; padding-bottom: 0; }
   .modal-footer { border-top: 1px solid var(--gray-soft); }
-
+ 
   /* ─── TICKER ─── */
   .ticker-wrap {
     background: var(--coral);
@@ -520,7 +523,7 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-
+ 
   @media (max-width: 768px) {
     .hero-emoji-grid { grid-template-columns: repeat(3, 1fr); max-width: 300px; }
     .emoji-card-hero { padding: 18px 12px; font-size: 2rem; }
@@ -531,11 +534,11 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- Cursor personalizado -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-
+ 
 <!-- Botões flutuantes de contato -->
 <div class="contact-bar">
   <a href="https://wa.me/5511999999999?text=Olá!%20Tenho%20interesse%20em%20brindes%20corporativos" target="_blank" class="float-btn whatsapp">
@@ -547,7 +550,7 @@
     <span class="float-btn-label">Instagram</span>
   </a>
 </div>
-
+ 
 <!-- NAVBAR -->
 <nav class="topnav">
   <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3">
@@ -560,7 +563,7 @@
     </div>
   </div>
 </nav>
-
+ 
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
@@ -582,7 +585,7 @@
     <span class="ticker-item">💰 Ticket de R$1.500 a R$5.000</span>
   </div>
 </div>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-blob"></div>
@@ -626,7 +629,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PÚBLICO -->
 <section id="publico" style="background: var(--white); padding: 70px 0;">
   <div class="container">
@@ -657,7 +660,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PROBLEMA / SOLUÇÃO -->
 <section id="problema-solucao" style="background: var(--gray-soft);">
   <div class="container">
@@ -687,7 +690,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PRODUTOS -->
 <section id="produtos">
   <div class="container">
@@ -740,7 +743,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- DETALHES OPERACIONAIS -->
 <section id="detalhes" style="background: var(--white);">
   <div class="container">
@@ -785,7 +788,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- DIFERENCIAIS -->
 <section id="diferenciais">
   <div class="container">
@@ -821,7 +824,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CANAIS -->
 <section id="canais">
   <div class="container">
@@ -869,7 +872,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- EQUIPE -->
 <section id="equipe" style="background: var(--white);">
   <div class="container">
@@ -907,7 +910,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CTA FINAL -->
 <section id="cta">
   <div class="container position-relative">
@@ -921,7 +924,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -957,7 +960,7 @@
     </div>
   </div>
 </footer>
-
+ 
 <!-- MODAIS DOS PRODUTOS -->
 <div class="modal fade" id="modalCopo" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -982,7 +985,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="modal fade" id="modalSqueeze" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-2">
@@ -1006,7 +1009,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="modal fade" id="modalCaneca" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-2">
@@ -1030,7 +1033,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="modal fade" id="modalKit" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-2">
@@ -1054,7 +1057,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="modal fade" id="modalEcobag" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-2">
@@ -1078,7 +1081,7 @@
     </div>
   </div>
 </div>
-
+ 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // ─── CURSOR PERSONALIZADO ───
@@ -1094,7 +1097,7 @@
     el.addEventListener('mouseenter', () => { dot.style.transform += ' scale(2)'; ring.style.opacity = '1'; });
     el.addEventListener('mouseleave', () => { ring.style.opacity = '0.5'; });
   });
-
+ 
   // ─── REVEAL ON SCROLL ───
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1106,7 +1109,7 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(r => observer.observe(r));
-
+ 
   // ─── FLOATING BTN PULSE ───
   const floatBtns = document.querySelectorAll('.float-btn');
   let pulse = true;
@@ -1117,7 +1120,7 @@
     });
     pulse = !pulse;
   }, 1600);
-
+ 
   // ─── EASTER EGG CONSOLE ───
   console.log('%c🌟 Mundo dos Brindes — Carregado com Sucesso!', 'color:#FF5A4A; font-size:18px; font-weight:bold;');
   console.log('%c💬 Quer fazer um pedido? https://wa.me/5511999999999', 'color:#25D366; font-size:13px;');
