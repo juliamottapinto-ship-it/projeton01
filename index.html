@@ -4,214 +4,1123 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundo dos Brindes 🌟</title>
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Fonte profissional -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --coral: #FF5A4A;
+    --coral-dark: #E03D2D;
+    --coral-light: #FF8070;
+    --gold: #FFB347;
+    --gold-dark: #E89A30;
+    --navy: #1A1A2E;
+    --navy-mid: #16213E;
+    --cream: #FFF8F4;
+    --white: #FFFFFF;
+    --gray-soft: #F4F0ED;
+    --text-main: #1A1A2E;
+    --text-muted: #6B6B7B;
+    --shadow-card: 0 8px 32px rgba(255,90,74,0.10);
+    --shadow-hover: 0 20px 48px rgba(255,90,74,0.22);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
   }
 
-  header {
-    background-color: #ff6f61;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
+  /* ─── CURSOR PERSONALIZADO ─── */
+  .cursor-dot {
+    width: 10px; height: 10px;
+    background: var(--coral);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.15s ease;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 2px solid var(--coral-light);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0.5;
   }
 
-  header h1 {
-    font-size: 2.8rem;
+  /* ─── NAVBAR ─── */
+  .navbar-brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white) !important;
+    letter-spacing: -0.5px;
+  }
+  .navbar-brand-logo span { color: var(--gold); }
+  nav.topnav {
+    background: var(--navy);
+    padding: 14px 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+  }
+  .nav-link-custom {
+    color: rgba(255,255,255,0.75) !important;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    padding: 6px 14px !important;
+  }
+  .nav-link-custom:hover { color: var(--gold) !important; }
+  .nav-cta {
+    background: var(--coral);
+    color: white !important;
+    border-radius: 30px;
+    padding: 8px 22px !important;
+    font-weight: 700 !important;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--coral-dark) !important; transform: scale(1.04); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #2d1a3e 100%);
+    min-height: 92vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 80px 0;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(255,90,74,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,179,71,0.12) 0%, transparent 55%);
+  }
+  .hero-blob {
+    position: absolute; right: -120px; top: -80px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,90,74,0.15) 0%, transparent 65%);
+    border-radius: 50%;
+    animation: blobPulse 6s ease-in-out infinite;
+  }
+  @keyframes blobPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.08) rotate(8deg); }
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,179,71,0.15);
+    border: 1px solid rgba(255,179,71,0.4);
+    color: var(--gold);
+    font-size: 0.8rem;
     font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.7s ease both;
   }
-
-  header p {
-    font-size: 1.2rem;
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.1s ease both;
   }
-
-  section {
-    margin: 50px 0;
+  .hero h1 em {
+    font-style: normal;
+    color: var(--coral-light);
   }
-
-  h2 {
-    color: #ff6f61;
-    margin-bottom: 30px;
+  .hero p.lead {
+    color: rgba(255,255,255,0.72);
+    font-size: 1.15rem;
+    font-weight: 400;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.9s 0.2s ease both;
   }
-
-  .emoji {
-    font-size: 1.4rem;
-    margin-right: 5px;
-  }
-
-  .card {
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-
-  .card img {
-    max-height: 120px;
-    object-fit: contain;
-    margin-bottom: 15px;
-  }
-
-  .btn-contact {
-    margin: 5px;
-    font-weight: 700;
-  }
-
-  footer {
-    background-color: #333;
+  .hero-btns { animation: fadeUp 1s 0.3s ease both; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-hero-primary {
+    background: var(--coral);
     color: white;
-    padding: 30px 0;
-    text-align: center;
-  }
-
-  footer a {
-    color: #ff6f61;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 16px 38px;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0 8px 28px rgba(255,90,74,0.4);
+    transition: all 0.25s;
     text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-hero-primary:hover { background: var(--coral-dark); color: white; transform: translateY(-3px); box-shadow: 0 14px 36px rgba(255,90,74,0.45); }
+  .btn-hero-secondary {
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.28);
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-hero-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+  .hero-stats {
+    display: flex; gap: 40px; flex-wrap: wrap; margin-top: 60px;
+    animation: fadeUp 1.1s 0.4s ease both;
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--white);
+    font-weight: 900;
+  }
+  .hero-stat span { color: rgba(255,255,255,0.52); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero-visual {
+    position: relative;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-emoji-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    max-width: 380px; margin: 0 auto;
+  }
+  .emoji-card-hero {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    font-size: 2.6rem;
+    transition: transform 0.3s, background 0.3s;
+    animation: float 4s ease-in-out infinite;
+  }
+  .emoji-card-hero:nth-child(2) { animation-delay: 0.5s; }
+  .emoji-card-hero:nth-child(3) { animation-delay: 1s; }
+  .emoji-card-hero:nth-child(4) { animation-delay: 1.5s; }
+  .emoji-card-hero:nth-child(5) { animation-delay: 0.8s; }
+  .emoji-card-hero:nth-child(6) { animation-delay: 0.3s; }
+  .emoji-card-hero p { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin: 8px 0 0; font-weight: 500; }
+  .emoji-card-hero:hover { transform: translateY(-6px) scale(1.06); background: rgba(255,90,74,0.18); }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+  /* ─── SECTION GLOBAL ─── */
+  section { padding: 90px 0; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--coral);
+    background: rgba(255,90,74,0.08); border-radius: 30px;
+    padding: 5px 16px; margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+    font-weight: 900; color: var(--text-main);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; }
+
+  /* ─── PROBLEMA / SOLUÇÃO ─── */
+  #problema-solucao { background: var(--white); }
+  .problema-box {
+    background: var(--gray-soft);
+    border-radius: var(--radius);
+    padding: 40px;
+    border-left: 5px solid var(--coral);
+    position: relative; overflow: hidden;
+  }
+  .problema-box::before {
+    content: '❗';
+    position: absolute; right: 30px; top: 24px;
+    font-size: 4rem; opacity: 0.08;
+  }
+  .solucao-box {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
+    border-radius: var(--radius);
+    padding: 40px;
+    color: white;
+    position: relative; overflow: hidden;
+  }
+  .solucao-box::before {
+    content: '💡';
+    position: absolute; right: 30px; top: 24px;
+    font-size: 4rem; opacity: 0.12;
+  }
+  .solucao-box h4 { color: var(--gold); }
+
+  /* ─── PRODUTOS ─── */
+  #produtos { background: var(--gray-soft); }
+  .product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 36px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s cubic-bezier(.23,1,.32,1), box-shadow 0.35s;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  .product-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--radius);
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, var(--coral), var(--gold)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .product-card:hover { transform: translateY(-14px) scale(1.03); box-shadow: var(--shadow-hover); }
+  .product-card:hover::after { opacity: 1; }
+  .product-emoji { font-size: 3.8rem; display: block; margin-bottom: 16px; }
+  .product-card h5 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--text-main); }
+  .product-card p { color: var(--text-muted); font-size: 0.88rem; margin-top: 8px; }
+  .product-badge {
+    display: inline-block;
+    background: rgba(255,90,74,0.1);
+    color: var(--coral);
+    font-size: 0.72rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px; margin-top: 12px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .product-card.featured { background: linear-gradient(135deg, #fff8f4 0%, #fff0eb 100%); }
+
+  /* ─── DETALHES ─── */
+  #detalhes { background: var(--white); }
+  .detail-item {
+    display: flex; align-items: center; gap: 20px;
+    background: var(--gray-soft);
+    border-radius: var(--radius-sm);
+    padding: 24px 28px;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .detail-item:hover { transform: translateX(8px); box-shadow: var(--shadow-card); }
+  .detail-icon {
+    font-size: 2.2rem;
+    background: var(--white);
+    border-radius: 14px;
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+  }
+  .detail-item h6 { font-weight: 700; color: var(--text-main); margin-bottom: 2px; font-size: 1rem; }
+  .detail-item span { color: var(--text-muted); font-size: 0.88rem; }
+
+  /* ─── CANAIS ─── */
+  #canais { background: var(--navy); }
+  #canais .section-title { color: var(--white); }
+  #canais .section-label { background: rgba(255,179,71,0.15); color: var(--gold); }
+  #canais .section-subtitle { color: rgba(255,255,255,0.55); }
+  .canal-card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 32px 20px; text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+  .canal-card:hover { background: rgba(255,90,74,0.18); border-color: var(--coral); transform: translateY(-8px); }
+  .canal-card .canal-icon { font-size: 2.6rem; display: block; margin-bottom: 12px; }
+  .canal-card h6 { color: white; font-weight: 700; font-size: 0.95rem; }
+  .canal-card span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+
+  /* ─── BOTÕES DE CONTATO FLUTUANTES ─── */
+  .contact-bar {
+    position: fixed; bottom: 28px; right: 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    z-index: 999;
+  }
+  .float-btn {
+    width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: white; text-decoration: none;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+  .float-btn:hover { transform: scale(1.15); box-shadow: 0 10px 32px rgba(0,0,0,0.32); }
+  .float-btn.whatsapp { background: #25D366; }
+  .float-btn.instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+  .float-btn-label {
+    position: absolute; right: 68px;
+    background: var(--navy); color: white;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 6px 14px; border-radius: 8px;
+    white-space: nowrap; opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .float-btn:hover .float-btn-label { opacity: 1; }
+
+  /* ─── DIFERENCIAIS ─── */
+  #diferenciais { background: var(--cream); }
+  .diff-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-card);
+    border-top: 4px solid var(--coral);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+  }
+  .diff-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+  .diff-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: rgba(255,90,74,0.12);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .diff-card h5 { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
+  .diff-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+
+  /* ─── EQUIPE ─── */
+  #equipe { background: var(--white); }
+  .team-visual {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: var(--radius);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .team-visual::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(255,90,74,0.12);
+    top: -80px; right: -60px;
+  }
+  .team-avatars { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+  .avatar {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    transition: transform 0.3s;
+  }
+  .avatar:hover { transform: scale(1.15); }
+  .team-visual h3 { font-family: 'Playfair Display', serif; color: white; font-size: 1.8rem; }
+  .team-visual p { color: rgba(255,255,255,0.6); }
+  .team-detail {
+    background: var(--gray-soft);
+    border-radius: var(--radius-sm);
+    padding: 28px;
+    text-align: center;
+    height: 100%;
+  }
+  .team-detail .big { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--coral); }
+  .team-detail h6 { font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+  .team-detail p { color: var(--text-muted); font-size: 0.88rem; }
+
+  /* ─── CTA FINAL ─── */
+  #cta {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 50%, #c02b1b 100%);
+    padding: 100px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: '🎁';
+    font-size: 18rem; opacity: 0.05;
+    position: absolute; right: -60px; top: -40px;
+    line-height: 1;
+  }
+  #cta h2 { font-family: 'Playfair Display', serif; color: white; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 20px; }
+  #cta p { color: rgba(255,255,255,0.78); font-size: 1.1rem; margin-bottom: 40px; }
+  .btn-cta-white {
+    background: white; color: var(--coral);
+    font-weight: 700; border-radius: 50px;
+    padding: 18px 44px; font-size: 1rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: all 0.25s;
+    margin: 8px;
+  }
+  .btn-cta-white:hover { transform: translateY(-4px) scale(1.04); color: var(--coral-dark); }
+  .btn-cta-outline {
+    background: transparent; color: white;
+    font-weight: 700; border-radius: 50px;
+    padding: 16px 38px; font-size: 1rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid rgba(255,255,255,0.45);
+    transition: all 0.25s;
+    margin: 8px;
+  }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.12); color: white; transform: translateY(-4px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.55);
+    padding: 48px 0 32px;
+    font-size: 0.88rem;
+  }
+  footer .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: white; font-weight: 900;
+  }
+  footer .brand span { color: var(--coral); }
+  footer a { color: var(--coral-light); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--gold); }
+  .footer-divider { border-color: rgba(255,255,255,0.1); margin: 32px 0 24px; }
+
+  /* ─── ANIMAÇÕES DE ENTRADA ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ─── MODAL PRODUTO ─── */
+  .product-modal-emoji { font-size: 4rem; display: block; margin-bottom: 16px; }
+  .modal-content { border-radius: var(--radius) !important; border: none; }
+  .modal-header { border-bottom: none; padding-bottom: 0; }
+  .modal-footer { border-top: 1px solid var(--gray-soft); }
+
+  /* ─── TICKER ─── */
+  .ticker-wrap {
+    background: var(--coral);
+    padding: 12px 0; overflow: hidden; position: relative;
+  }
+  .ticker-track {
+    display: flex; white-space: nowrap;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-item {
+    font-weight: 700; color: white;
+    font-size: 0.88rem; letter-spacing: 0.05em;
+    padding: 0 40px;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  ul li {
-    margin-bottom: 10px;
+  @media (max-width: 768px) {
+    .hero-emoji-grid { grid-template-columns: repeat(3, 1fr); max-width: 300px; }
+    .emoji-card-hero { padding: 18px 12px; font-size: 2rem; }
+    .hero-stats { gap: 24px; }
+    .hero-stat strong { font-size: 1.5rem; }
+    .contact-bar { bottom: 18px; right: 18px; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🌟 Mundo dos Brindes 🌟</h1>
-  <p>Brindes corporativos personalizados com entrega rápida e qualidade profissional 🚀</p>
-</header>
+<!-- Cursor personalizado -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<main class="container my-5">
+<!-- Botões flutuantes de contato -->
+<div class="contact-bar">
+  <a href="https://wa.me/5511999999999?text=Olá!%20Tenho%20interesse%20em%20brindes%20corporativos" target="_blank" class="float-btn whatsapp">
+    💬
+    <span class="float-btn-label">WhatsApp</span>
+  </a>
+  <a href="https://www.instagram.com/mundodosbrindes" target="_blank" class="float-btn instagram">
+    📸
+    <span class="float-btn-label">Instagram</span>
+  </a>
+</div>
 
-  <respostas>
+<!-- NAVBAR -->
+<nav class="topnav">
+  <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3">
+    <a class="navbar-brand-logo" href="#">🌟 Mundo<span>Brindes</span></a>
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <a class="nav-link-custom" href="#produtos">Produtos</a>
+      <a class="nav-link-custom" href="#diferenciais">Diferenciais</a>
+      <a class="nav-link-custom" href="#canais">Contato</a>
+      <a class="nav-link-custom nav-cta" href="https://wa.me/5511999999999" target="_blank">💬 Pedir Orçamento</a>
+    </div>
+  </div>
+</nav>
 
-    <section id="publico">
-      <h2>👥 Público-Alvo</h2>
-      <p><strong>Principal:</strong> Empresas (B2B) – Startups + Agências de marketing</p>
-      <p><strong>Secundário:</strong> Pessoas físicas (B2C complementar)</p>
-    </section>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">🎁 Entrega em 7 dias úteis</span>
+    <span class="ticker-item">☕ Copos Térmicos</span>
+    <span class="ticker-item">💧 Squeezes</span>
+    <span class="ticker-item">📦 Kits Corporativos</span>
+    <span class="ticker-item">🛍️ Ecobags</span>
+    <span class="ticker-item">🏭 Produção Própria em Guarulhos</span>
+    <span class="ticker-item">✅ Mínimo 50 unidades</span>
+    <span class="ticker-item">💰 Ticket de R$1.500 a R$5.000</span>
+    <span class="ticker-item">🎁 Entrega em 7 dias úteis</span>
+    <span class="ticker-item">☕ Copos Térmicos</span>
+    <span class="ticker-item">💧 Squeezes</span>
+    <span class="ticker-item">📦 Kits Corporativos</span>
+    <span class="ticker-item">🛍️ Ecobags</span>
+    <span class="ticker-item">🏭 Produção Própria em Guarulhos</span>
+    <span class="ticker-item">✅ Mínimo 50 unidades</span>
+    <span class="ticker-item">💰 Ticket de R$1.500 a R$5.000</span>
+  </div>
+</div>
 
-    <section id="problema">
-      <h2>❗ Problema</h2>
-      <p>Empresas precisam de brindes personalizados para clientes, eventos e kits internos, mas enfrentam dificuldade em encontrar fornecedores confiáveis, com prazo rápido e personalização flexível.</p>
-    </section>
-
-    <section id="proposta-valor">
-      <h2>💡 Proposta de Valor</h2>
-      <p>Entrega rápida de brindes corporativos personalizados, com qualidade profissional e produção própria, ajudando empresas a fortalecer marca e engajar clientes/funcionários.</p>
-    </section>
-
-    <section id="modelo-receita">
-      <h2>💰 Modelo de Receita</h2>
-      <p>Venda de brindes corporativos produzidos internamente.</p>
-    </section>
-
-    <section id="produtos">
-      <h2>🎁 Produtos Principais</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/3126/3126510.png" alt="Copos térmicos">
-            <p class="emoji">☕</p>
-            <h5>Copos térmicos personalizados</h5>
-          </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-tag">🚀 Brindes Corporativos Profissionais</div>
+        <h1>Brindes que <em>fortalecem</em> a sua marca</h1>
+        <p class="lead">Copos, kits e ecobags personalizados com produção própria, entrega rápida e qualidade que impressiona. Para startups, agências e grandes empresas.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/5511999999999?text=Quero%20fazer%20um%20pedido!" target="_blank" class="btn-hero-primary">💬 Pedir Orçamento Agora</a>
+          <a href="#produtos" class="btn-hero-secondary">🎁 Ver Produtos</a>
         </div>
-        <div class="col-md-4">
-          <div class="card p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/1605/1605811.png" alt="Squeeze">
-            <p class="emoji">💧</p>
-            <h5>Squeeze personalizados</h5>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>+50</strong>
+            <span>Unid. mínima</span>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/888/888859.png" alt="Canecas">
-            <p class="emoji">🫖</p>
-            <h5>Canecas personalizadas</h5>
+          <div class="hero-stat">
+            <strong>7</strong>
+            <span>Dias úteis</span>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/2910/2910762.png" alt="Kits">
-            <p class="emoji">📦</p>
-            <h5>Kits corporativos</h5>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Ecobags">
-            <p class="emoji">🛍️</p>
-            <h5>Ecobags personalizadas</h5>
+          <div class="hero-stat">
+            <strong>5k</strong>
+            <span>Ticket máx. R$</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="detalhes">
-      <h2>📊 Detalhes Operacionais</h2>
-      <ul>
-        <li><strong>Quantidade mínima:</strong> 50 unidades ✅</li>
-        <li><strong>Prazo de produção:</strong> 7 dias úteis ✅</li>
-        <li><strong>Ticket médio esperado:</strong> R$1.500 – R$5.000 ✅</li>
-      </ul>
-    </section>
-
-    <section id="canais">
-      <h2>📱 Canais de Aquisição</h2>
-      <ul>
-        <li>Instagram 📸</li>
-        <li>WhatsApp 💬</li>
-        <li>Facebook Marketplace 👍</li>
-        <li>TikTok Shop 🎵</li>
-        <li>Site próprio 🌐</li>
-      </ul>
-      <div class="mt-3">
-        <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-success btn-contact">💬 WhatsApp</a>
-        <a href="https://www.instagram.com/mundodosbrindes" target="_blank" class="btn btn-primary btn-contact">📸 Instagram</a>
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="hero-emoji-grid">
+            <div class="emoji-card-hero">☕<p>Copos Térmicos</p></div>
+            <div class="emoji-card-hero">💧<p>Squeezes</p></div>
+            <div class="emoji-card-hero">🫖<p>Canecas</p></div>
+            <div class="emoji-card-hero">📦<p>Kits</p></div>
+            <div class="emoji-card-hero">🛍️<p>Ecobags</p></div>
+            <div class="emoji-card-hero">🎨<p>Personalizados</p></div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="diferenciais">
-      <h2>✨ Diferenciais</h2>
-      <ul>
-        <li>Produção própria 🏭</li>
-        <li>Localização estratégica em Guarulhos (SP) 📍</li>
-        <li>Atendimento direto digital 💻</li>
-      </ul>
-    </section>
+<!-- PÚBLICO -->
+<section id="publico" style="background: var(--white); padding: 70px 0;">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-5 reveal">
+        <span class="section-label">👥 Para quem?</span>
+        <h2 class="section-title">Servimos quem constrói marcas</h2>
+        <p class="section-subtitle">Do cliente B2B corporativo à pessoa física que quer surpreender — atendemos com o mesmo cuidado.</p>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-4">
+          <div class="col-md-6 reveal reveal-delay-1">
+            <div class="diff-card" style="border-top-color: var(--coral);">
+              <div style="font-size:2.5rem; margin-bottom:12px;">🏢</div>
+              <h5>B2B – Principal</h5>
+              <p>Startups e agências de marketing que precisam de brindes para clientes, eventos e kits internos com qualidade e prazo.</p>
+            </div>
+          </div>
+          <div class="col-md-6 reveal reveal-delay-2">
+            <div class="diff-card" style="border-top-color: var(--gold);">
+              <div style="font-size:2.5rem; margin-bottom:12px;">👤</div>
+              <h5>B2C – Complementar</h5>
+              <p>Pessoas físicas que buscam presentes personalizados únicos e memoráveis para ocasiões especiais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="equipe">
-      <h2>👨‍💼 Equipe</h2>
-      <p>4 pessoas, cada uma dedicando 4h/dia ⏰</p>
-    </section>
+<!-- PROBLEMA / SOLUÇÃO -->
+<section id="problema-solucao" style="background: var(--gray-soft);">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 reveal reveal-delay-1">
+        <div class="problema-box h-100">
+          <h4 style="color: var(--coral); font-weight:700; margin-bottom:16px;">❗ O Problema</h4>
+          <p style="font-size:1.05rem; line-height:1.8;">Empresas precisam de brindes personalizados para clientes, eventos e kits internos, mas enfrentam dificuldade em encontrar fornecedores <strong>confiáveis</strong>, com <strong>prazo rápido</strong> e <strong>personalização flexível</strong>.</p>
+          <ul style="list-style:none; padding:0; margin-top:20px;">
+            <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.06);">😩 Fornecedores com prazo longo demais</li>
+            <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.06);">😤 Qualidade inconsistente</li>
+            <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.06);">😰 Personalização limitada e inflexível</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 reveal reveal-delay-2">
+        <div class="solucao-box h-100">
+          <h4 style="color: var(--gold); font-weight:700; margin-bottom:16px;">💡 Nossa Solução</h4>
+          <p style="font-size:1.05rem; line-height:1.8; color:rgba(255,255,255,0.9);">Entrega rápida de brindes corporativos personalizados, com qualidade profissional e produção própria, ajudando empresas a <strong style="color:white;">fortalecer marca</strong> e engajar clientes e funcionários.</p>
+          <ul style="list-style:none; padding:0; margin-top:20px; color:rgba(255,255,255,0.85);">
+            <li style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.15);">✅ Produção própria em Guarulhos (SP)</li>
+            <li style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.15);">✅ 7 dias úteis do pedido ao produto</li>
+            <li style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.15);">✅ Atendimento digital direto 24h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </respostas>
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">🎁 Catálogo</span>
+      <h2 class="section-title">Produtos Principais</h2>
+      <p class="section-subtitle mx-auto">Clique em um produto para ver mais detalhes e solicitar seu orçamento personalizado.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal reveal-delay-1">
+        <div class="product-card h-100 featured" data-bs-toggle="modal" data-bs-target="#modalCopo">
+          <span class="product-emoji">☕</span>
+          <h5>Copos Térmicos</h5>
+          <p>Personalizados com logo da empresa, em várias cores e capacidades. Ideais para kits e eventos corporativos.</p>
+          <div class="product-badge">🔥 Mais Vendido</div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-2">
+        <div class="product-card h-100" data-bs-toggle="modal" data-bs-target="#modalSqueeze">
+          <span class="product-emoji">💧</span>
+          <h5>Squeezes Personalizados</h5>
+          <p>Design moderno e sustentável, perfeitos para ações de employer branding e campanhas de saúde.</p>
+          <div class="product-badge">♻️ Sustentável</div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-3">
+        <div class="product-card h-100" data-bs-toggle="modal" data-bs-target="#modalCaneca">
+          <span class="product-emoji">🫖</span>
+          <h5>Canecas Personalizadas</h5>
+          <p>Clássicas e elegantes, com impressão de alta qualidade. Presentes que ficam na memória.</p>
+          <div class="product-badge">🎨 Alta Qualidade</div>
+        </div>
+      </div>
+      <div class="col-md-6 reveal reveal-delay-1">
+        <div class="product-card h-100 featured" data-bs-toggle="modal" data-bs-target="#modalKit">
+          <span class="product-emoji">📦</span>
+          <h5>Kits Corporativos</h5>
+          <p>Combine produtos e crie um kit exclusivo para onboarding, eventos ou presentes VIP. Embalagem personalizada inclusa.</p>
+          <div class="product-badge">⭐ Kit Completo</div>
+        </div>
+      </div>
+      <div class="col-md-6 reveal reveal-delay-2">
+        <div class="product-card h-100" data-bs-toggle="modal" data-bs-target="#modalEcobag">
+          <span class="product-emoji">🛍️</span>
+          <h5>Ecobags Personalizadas</h5>
+          <p>Sacolas ecológicas resistentes, 100% personalizáveis. Excelente para eventos, feiras e entregas de kits.</p>
+          <div class="product-badge">🌱 Eco-Friendly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</main>
+<!-- DETALHES OPERACIONAIS -->
+<section id="detalhes" style="background: var(--white);">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-4 reveal">
+        <span class="section-label">📊 Detalhes</span>
+        <h2 class="section-title">Como funciona nosso processo</h2>
+        <p class="section-subtitle">Simples, rápido e profissional — do briefing à entrega na sua porta.</p>
+      </div>
+      <div class="col-lg-8">
+        <div class="d-flex flex-column gap-3">
+          <div class="detail-item reveal reveal-delay-1">
+            <div class="detail-icon">✅</div>
+            <div>
+              <h6>Quantidade Mínima</h6>
+              <span>A partir de <strong>50 unidades</strong> por pedido — ideal para times, eventos e ações de marketing</span>
+            </div>
+          </div>
+          <div class="detail-item reveal reveal-delay-2">
+            <div class="detail-icon">⚡</div>
+            <div>
+              <h6>Prazo de Produção</h6>
+              <span>Apenas <strong>7 dias úteis</strong> do aprovação do pedido até o produto pronto para entrega</span>
+            </div>
+          </div>
+          <div class="detail-item reveal reveal-delay-3">
+            <div class="detail-icon">💰</div>
+            <div>
+              <h6>Ticket Médio</h6>
+              <span>Pedidos a partir de <strong>R$1.500</strong> até <strong>R$5.000+</strong> — conforme volume e tipo de produto</span>
+            </div>
+          </div>
+          <div class="detail-item reveal reveal-delay-4">
+            <div class="detail-icon">🚚</div>
+            <div>
+              <h6>Entrega</h6>
+              <span>Enviamos para <strong>todo o Brasil</strong> a partir de Guarulhos (SP) — com rastreamento garantido</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">✨ Por que nós?</span>
+      <h2 class="section-title">Nossos Diferenciais</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal reveal-delay-1">
+        <div class="diff-card">
+          <div class="diff-number">01</div>
+          <div style="font-size:2rem; margin-bottom:12px;">🏭</div>
+          <h5>Produção Própria</h5>
+          <p>Fabricação interna garante controle total de qualidade, personalização irrestrita e prazos que cumprimos de verdade.</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-2">
+        <div class="diff-card">
+          <div class="diff-number">02</div>
+          <div style="font-size:2rem; margin-bottom:12px;">📍</div>
+          <h5>Localização Estratégica</h5>
+          <p>Sediados em Guarulhos (SP), ao lado do principal hub logístico do país — entregamos rápido para qualquer estado.</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-3">
+        <div class="diff-card">
+          <div class="diff-number">03</div>
+          <div style="font-size:2rem; margin-bottom:12px;">💻</div>
+          <h5>Atendimento Digital</h5>
+          <p>WhatsApp, Instagram, TikTok Shop e site próprio — você faz tudo pelo canal que preferir, com resposta ágil.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANAIS -->
+<section id="canais">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">📱 Onde estamos</span>
+      <h2 class="section-title">Canais de Atendimento</h2>
+      <p class="section-subtitle mx-auto" style="color: rgba(255,255,255,0.55);">Fale conosco pelo canal que for mais conveniente para você.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg reveal reveal-delay-1">
+        <a href="https://wa.me/5511999999999" target="_blank" class="canal-card">
+          <span class="canal-icon">💬</span>
+          <h6>WhatsApp</h6>
+          <span>Contato direto</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg reveal reveal-delay-2">
+        <a href="https://www.instagram.com/mundodosbrindes" target="_blank" class="canal-card">
+          <span class="canal-icon">📸</span>
+          <h6>Instagram</h6>
+          <span>Portfólio e DMs</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg reveal reveal-delay-3">
+        <a href="#" class="canal-card">
+          <span class="canal-icon">👍</span>
+          <h6>Facebook</h6>
+          <span>Marketplace</span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg reveal reveal-delay-4">
+        <a href="#" class="canal-card">
+          <span class="canal-icon">🎵</span>
+          <h6>TikTok Shop</h6>
+          <span>Loja oficial</span>
+        </a>
+      </div>
+      <div class="col-12 col-md-4 col-lg reveal reveal-delay-5">
+        <a href="#" class="canal-card">
+          <span class="canal-icon">🌐</span>
+          <h6>Site Próprio</h6>
+          <span>Catálogo completo</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe" style="background: var(--white);">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">👨‍💼 Time</span>
+      <h2 class="section-title">Nossa Equipe</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-8 reveal">
+        <div class="team-visual h-100">
+          <div class="team-avatars">
+            <div class="avatar">👩‍💼</div>
+            <div class="avatar">👨‍🎨</div>
+            <div class="avatar">👩‍🔧</div>
+            <div class="avatar">👨‍💻</div>
+          </div>
+          <h3>4 Especialistas Dedicados</h3>
+          <p style="color:rgba(255,255,255,0.6); margin-top:12px;">Cada membro dedicado às operações, design, produção e atendimento — para que seu pedido saia perfeito.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-flex flex-column gap-4 h-100">
+          <div class="team-detail reveal reveal-delay-1">
+            <div class="big">4</div>
+            <h6>Pessoas na equipe</h6>
+            <p>Cada uma com papel estratégico no processo</p>
+          </div>
+          <div class="team-detail reveal reveal-delay-2">
+            <div class="big">4h</div>
+            <h6>Por dia por pessoa</h6>
+            <p>Dedicação focada e produtiva às operações</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta">
+  <div class="container position-relative">
+    <div class="reveal">
+      <h2>Pronto para fortalecer sua marca? 🚀</h2>
+      <p>Solicite seu orçamento agora e receba uma proposta personalizada em minutos.</p>
+      <div>
+        <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20fazer%20um%20pedido%20de%20brindes%20corporativos!" target="_blank" class="btn-cta-white">💬 WhatsApp Agora</a>
+        <a href="https://www.instagram.com/mundodosbrindes" target="_blank" class="btn-cta-outline">📸 Ver no Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Mundo dos Brindes 🌟 | Produção própria | Entrega no Brasil | <a href="#">Contato</a></p>
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-5">
+        <div class="brand mb-3">🌟 Mundo<span>Brindes</span></div>
+        <p>Brindes corporativos personalizados com entrega rápida e qualidade profissional — de Guarulhos para todo o Brasil.</p>
+      </div>
+      <div class="col-md-3">
+        <h6 style="color:rgba(255,255,255,0.85); margin-bottom:16px; font-weight:700;">🎁 Produtos</h6>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="#">☕ Copos Térmicos</a>
+          <a href="#">💧 Squeezes</a>
+          <a href="#">🫖 Canecas</a>
+          <a href="#">📦 Kits Corporativos</a>
+          <a href="#">🛍️ Ecobags</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h6 style="color:rgba(255,255,255,0.85); margin-bottom:16px; font-weight:700;">📱 Fale Conosco</h6>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="https://wa.me/5511999999999" target="_blank">💬 WhatsApp</a>
+          <a href="https://www.instagram.com/mundodosbrindes" target="_blank">📸 Instagram</a>
+          <a href="#">🌐 Site Oficial</a>
+          <a href="#">📍 Guarulhos, SP</a>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2026 Mundo dos Brindes 🌟 — Todos os direitos reservados</span>
+      <span>🏭 Produção própria | 🚚 Entrega em todo o Brasil</span>
+    </div>
+  </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- MODAIS DOS PRODUTOS -->
+<div class="modal fade" id="modalCopo" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center px-4 pb-2">
+        <span class="product-modal-emoji">☕</span>
+        <h4 style="font-family:'Playfair Display',serif; font-weight:900;">Copos Térmicos Personalizados</h4>
+        <p style="color:var(--text-muted); margin:16px 0;">Copos de alta qualidade com impressão do logo da sua empresa, disponíveis em diversas cores, tamanhos e acabamentos. Perfeitos para kits corporativos, eventos e presentes para clientes.</p>
+        <ul style="text-align:left; color:var(--text-muted); font-size:0.9rem;">
+          <li>✅ Impressão UV de alta resolução</li>
+          <li>✅ Capacidade: 300ml, 450ml, 600ml</li>
+          <li>✅ Cores: preta, branca, cinza, personalizada</li>
+          <li>✅ Mínimo: 50 unidades</li>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="https://wa.me/5511999999999?text=Quero%20orçamento%20para%20Copos%20Térmicos!" target="_blank" class="btn btn-success px-4">💬 Pedir Orçamento</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalSqueeze" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center px-4 pb-2">
+        <span class="product-modal-emoji">💧</span>
+        <h4 style="font-family:'Playfair Display',serif; font-weight:900;">Squeezes Personalizados</h4>
+        <p style="color:var(--text-muted); margin:16px 0;">Design moderno e sustentável com personalização completa. Ideais para ações de bem-estar, employer branding e campanhas de saúde corporativa.</p>
+        <ul style="text-align:left; color:var(--text-muted); font-size:0.9rem;">
+          <li>♻️ Materiais sustentáveis</li>
+          <li>✅ Capacidade: 500ml ou 700ml</li>
+          <li>✅ Tampa com bico dosador</li>
+          <li>✅ Mínimo: 50 unidades</li>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="https://wa.me/5511999999999?text=Quero%20orçamento%20para%20Squeezes!" target="_blank" class="btn btn-success px-4">💬 Pedir Orçamento</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCaneca" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center px-4 pb-2">
+        <span class="product-modal-emoji">🫖</span>
+        <h4 style="font-family:'Playfair Display',serif; font-weight:900;">Canecas Personalizadas</h4>
+        <p style="color:var(--text-muted); margin:16px 0;">Clássicas e elegantes, com impressão de alta qualidade que dura anos. Presentes que ficam na memória e na mesa do cliente.</p>
+        <ul style="text-align:left; color:var(--text-muted); font-size:0.9rem;">
+          <li>🎨 Impressão full-color 360°</li>
+          <li>✅ Capacidade: 300ml</li>
+          <li>✅ Cerâmica ou porcelana</li>
+          <li>✅ Mínimo: 50 unidades</li>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="https://wa.me/5511999999999?text=Quero%20orçamento%20para%20Canecas!" target="_blank" class="btn btn-success px-4">💬 Pedir Orçamento</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalKit" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center px-4 pb-2">
+        <span class="product-modal-emoji">📦</span>
+        <h4 style="font-family:'Playfair Display',serif; font-weight:900;">Kits Corporativos</h4>
+        <p style="color:var(--text-muted); margin:16px 0;">Combine produtos e crie uma experiência completa para onboarding, eventos VIP ou presenteio de clientes. Embalagem personalizada com identidade visual da sua marca.</p>
+        <ul style="text-align:left; color:var(--text-muted); font-size:0.9rem;">
+          <li>⭐ Monte seu kit do zero</li>
+          <li>✅ Embalagem personalizada inclusa</li>
+          <li>✅ Carta personalizada opcional</li>
+          <li>✅ Mínimo: 50 kits</li>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="https://wa.me/5511999999999?text=Quero%20orçamento%20para%20Kits%20Corporativos!" target="_blank" class="btn btn-success px-4">💬 Montar meu Kit</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEcobag" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-2">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center px-4 pb-2">
+        <span class="product-modal-emoji">🛍️</span>
+        <h4 style="font-family:'Playfair Display',serif; font-weight:900;">Ecobags Personalizadas</h4>
+        <p style="color:var(--text-muted); margin:16px 0;">Sacolas ecológicas resistentes e 100% personalizáveis. Ideais para feiras, eventos, entrega de kits e ações de sustentabilidade corporativa.</p>
+        <ul style="text-align:left; color:var(--text-muted); font-size:0.9rem;">
+          <li>🌱 Material ecológico resistente</li>
+          <li>✅ Impressão serigrafia ou digital</li>
+          <li>✅ Tamanhos variados</li>
+          <li>✅ Mínimo: 50 unidades</li>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="https://wa.me/5511999999999?text=Quero%20orçamento%20para%20Ecobags!" target="_blank" class="btn btn-success px-4">💬 Pedir Orçamento</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Efeito simples: alerta no console ao carregar
-  window.addEventListener('load', () => {
-    console.log('🌟 Mundo dos Brindes carregado com sucesso!');
+  // ─── CURSOR PERSONALIZADO ───
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
+    ring.style.transform = `translate(${mouseX - 18}px, ${mouseY - 18}px)`;
   });
-</script>
+  document.querySelectorAll('a, button, .product-card, .canal-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.style.transform += ' scale(2)'; ring.style.opacity = '1'; });
+    el.addEventListener('mouseleave', () => { ring.style.opacity = '0.5'; });
+  });
 
+  // ─── REVEAL ON SCROLL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ─── FLOATING BTN PULSE ───
+  const floatBtns = document.querySelectorAll('.float-btn');
+  let pulse = true;
+  setInterval(() => {
+    floatBtns.forEach(btn => {
+      if (pulse) { btn.style.boxShadow = '0 6px 24px rgba(0,0,0,0.25), 0 0 0 8px rgba(37,211,102,0.15)'; }
+      else { btn.style.boxShadow = '0 6px 24px rgba(0,0,0,0.25)'; }
+    });
+    pulse = !pulse;
+  }, 1600);
+
+  // ─── EASTER EGG CONSOLE ───
+  console.log('%c🌟 Mundo dos Brindes — Carregado com Sucesso!', 'color:#FF5A4A; font-size:18px; font-weight:bold;');
+  console.log('%c💬 Quer fazer um pedido? https://wa.me/5511999999999', 'color:#25D366; font-size:13px;');
+</script>
 </body>
 </html>
